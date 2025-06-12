@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { Lock, AlertCircle } from 'lucide-react';
@@ -45,22 +44,22 @@ const OTPScreen = ({ onSuccess }: OTPScreenProps) => {
   }, [value, isLoading]);
 
   return (
-    <div className="min-h-screen bg-autumn-beige flex items-center justify-center p-6">
+    <div className="min-h-screen flex items-center justify-center p-6 bg-cover bg-center" style={{ backgroundImage: "url('/pin-bg.png')" }}>
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-lg p-8 text-center animate-scale-in">
-          <div className="w-16 h-16 bg-gradient-to-br from-autumn-sage to-autumn-brown rounded-full flex items-center justify-center mx-auto mb-6">
+        <div className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-lg p-10 text-center animate-scale-in">
+          <div className="w-16 h-16 bg-gradient-to-br from-autumn-sage to-autumn-brown rounded-full flex items-center justify-center mx-auto mb-8">
             <Lock size={24} className="text-white" />
           </div>
           
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">Enter PIN</h1>
-          <p className="text-gray-600 mb-8">Please enter your 4-digit PIN to access the chat</p>
+          <h1 className="text-2xl font-bold text-gray-800 mb-2 font-mono">Enter Security PIN</h1>
+          <p className="text-gray-600 text-sm mb-6 font-mono">Enter the 4-digit PIN to access the application</p>
           
-          <div className="mb-6">
+          <div className="flex justify-center mb-8">
             <InputOTP
               value={value}
               onChange={handleValueChange}
               maxLength={4}
-              className="flex justify-center"
+              containerClassName="justify-center"
               disabled={isLoading}
             >
               <InputOTPGroup>

@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -58,6 +57,9 @@ export default {
 				'autumn-sage': 'hsl(var(--autumn-sage))',
 				'autumn-brown': 'hsl(var(--autumn-brown))',
 				'autumn-light': 'hsl(var(--autumn-light))',
+			},
+			fontFamily: {
+					mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Sparkles, Coffee, BookOpen, Lightbulb } from 'lucide-react';
 
@@ -8,25 +7,25 @@ const WelcomeMessage = () => {
       icon: Coffee,
       title: "Tell me a joke",
       description: "Brighten up my day",
-      borderColor: "border-l-orange-400"
+      tags: ["Fun-Fact"],
     },
     {
       icon: BookOpen,
-      title: "Help me learn something",
-      description: "Explain a concept",
-      borderColor: "border-l-blue-400"
+      title: "Sustainable Packaging",
+      description: "Receive detailed investment.",
+      tags: ["Eco - Friendly Tech"],
     },
     {
       icon: Lightbulb,
       title: "Creative brainstorming",
       description: "Generate ideas together",
-      borderColor: "border-l-green-400"
+      tags: ["Brainstorm"],
     },
     {
       icon: Sparkles,
       title: "Plan my day",
       description: "Organize my schedule",
-      borderColor: "border-l-purple-400"
+      tags: ["Time Management"],
     }
   ];
 
@@ -46,20 +45,32 @@ const WelcomeMessage = () => {
         {suggestions.map((suggestion, index) => (
           <div
             key={index}
-            className={`group p-6 bg-white rounded-2xl shadow-sm border border-gray-100 border-l-8 ${suggestion.borderColor} hover:shadow-md transition-all duration-200 cursor-pointer animate-slide-up`}
+            className={`group p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-xl hover:shadow-xl transition-all duration-200 cursor-pointer animate-slide-up`}
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <div className="flex items-start gap-4">
-              <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-autumn-sage group-hover:text-white transition-colors">
-                <suggestion.icon size={16} />
+              <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <suggestion.icon size={20} className="text-gray-600" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-gray-900 mb-2 text-lg">
+                <h3 className="font-semibold text-gray-900 mb-2 text-lg font-mono">
                   {suggestion.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed font-mono mb-0">
                   {suggestion.description}
                 </p>
+                {suggestion.tags && suggestion.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {suggestion.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="bg-gray-100 rounded-full px-3 py-1 text-xs text-gray-700 font-mono"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
