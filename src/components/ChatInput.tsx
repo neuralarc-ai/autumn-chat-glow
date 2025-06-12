@@ -25,6 +25,33 @@ const ChatInput = ({ onSendMessage, disabled }: ChatInputProps) => {
     }
   };
 
+  const handleMicClick = async () => {
+    try {
+      const response = await fetch('https://api.elevenlabs.io/v1/text-to-speech', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.ELEVENLABS_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: 'Hello, how can I assist you today?',
+          voice_id: 'agent_01jxajnxg3eb69kz07dnpspvrk',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to synthesize speech');
+      }
+
+      const audioBlob = await response.blob();
+      const audioUrl = URL.createObjectURL(audioBlob);
+      const audio = new Audio(audioUrl);
+      audio.play();
+    } catch (error) {
+      console.error('Error processing audio:', error);
+    }
+  };
+
   return (
     <div className="bg-[white] p-4 ">
       <form onSubmit={handleSubmit} className="flex items-end gap-3">
@@ -58,6 +85,7 @@ const ChatInput = ({ onSendMessage, disabled }: ChatInputProps) => {
             type="button"
             disabled={disabled}
             className="absolute right-14 top-1/2 -translate-y-1/2 text-white rounded-full h-10 w-10 p-0 bg-autumn-brown"
+            onClick={handleMicClick}
           >
             <Mic size={18} />
           </Button>
