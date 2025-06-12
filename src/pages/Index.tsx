@@ -5,6 +5,7 @@ import ChatMessage from '@/components/ChatMessage';
 import ChatInput from '@/components/ChatInput';
 import TypingIndicator from '@/components/TypingIndicator';
 import WelcomeMessage from '@/components/WelcomeMessage';
+import OTPScreen from '@/components/OTPScreen';
 
 interface Message {
   id: string;
@@ -14,6 +15,7 @@ interface Message {
 }
 
 const Index = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -25,6 +27,10 @@ const Index = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages, isTyping]);
+
+  const handleOTPSuccess = () => {
+    setIsAuthenticated(true);
+  };
 
   const handleSendMessage = async (text: string) => {
     const userMessage: Message = {
@@ -68,6 +74,12 @@ const Index = () => {
     setIsTyping(false);
   };
 
+  // Show OTP screen if not authenticated
+  if (!isAuthenticated) {
+    return <OTPScreen onSuccess={handleOTPSuccess} />;
+  }
+
+  // Show main chat interface once authenticated
   return (
     <div className="min-h-screen bg-autumn-beige flex flex-col">
       <ChatHeader onNewChat={handleNewChat} />
