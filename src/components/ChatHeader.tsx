@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { MessageSquare, MoreVertical, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,8 +14,8 @@ const ChatHeader = ({ onNewChat }: ChatHeaderProps) => {
           <MessageSquare size={20} className="text-white" />
         </div>
         <div>
-          <h1 className="font-semibold text-gray-800">Personal Assistant</h1>
-          <p className="text-sm text-gray-500">Always here to help</p>
+          <h1 className="font-semibold text-gray-800">Maya</h1>
+          <p className="text-sm text-gray-500">Your Personal Assistant</p>
         </div>
       </div>
       
@@ -28,22 +27,6 @@ const ChatHeader = ({ onNewChat }: ChatHeaderProps) => {
           className="text-autumn-sage hover:text-autumn-brown hover:bg-autumn-light"
         >
           New Chat
-        </Button>
-        
-        <Button
-          variant="ghost"
-          size="sm"
-          className="text-autumn-sage hover:text-autumn-brown hover:bg-autumn-light"
-        >
-          <Settings size={18} />
-        </Button>
-        
-        <Button
-          variant="ghost"
-          size="sm"
-          className="text-autumn-sage hover:text-autumn-brown hover:bg-autumn-light"
-        >
-          <MoreVertical size={18} />
         </Button>
       </div>
     </div>

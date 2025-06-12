@@ -123,3 +123,12 @@
     transform: scale(1);
   }
 }
+
+@keyframes rotateBorder {
+  from {
+    border-image-source: linear-gradient(90deg, #262626 -10.57%, #8B9C76 24.74%, #CEAF8E 56.8%);
+  }
+  to {
+    border-image-source: linear-gradient(450deg, #262626 -10.57%, #8B9C76 24.74%, #CEAF8E 56.8%);
+  }
+}
