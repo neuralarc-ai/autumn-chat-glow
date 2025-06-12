@@ -36,8 +36,8 @@ const WelcomeMessage = () => {
   return (
     <div className="flex-1 flex flex-col items-center justify-center p-8">
       <div className="text-center mb-8 animate-fade-in">
-        <div className="w-16 h-16 bg-gradient-to-br from-autumn-sage to-autumn-brown rounded-full flex items-center justify-center mb-4 mx-auto">
-          <Sparkles size={24} className="text-white" />
+        <div className="w-16 h-16 bg-gradient-to-br from-autumn-sage to-autumn-brown rounded-full flex items-center justify-center mb-4 mx-auto overflow-hidden">
+          <img src="/ai-agent.png" alt="AI Agent" className="w-full h-full object-cover" />
         </div>
         <h2 className="text-2xl font-semibold text-gray-800 mb-2">Welcome to MAYA</h2>
         <p className="text-gray-600 max-w-md">

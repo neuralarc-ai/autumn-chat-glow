@@ -10,9 +10,6 @@ const ChatHeader = ({ onNewChat }: ChatHeaderProps) => {
   return (
     <div className="border-b border-gray-200 bg-white px-6 py-4 flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-gradient-to-br from-autumn-sage to-autumn-brown rounded-xl flex items-center justify-center">
-          <MessageSquare size={20} className="text-white" />
-        </div>
         <div>
           <h1 className="font-semibold text-gray-800">Maya</h1>
           <p className="text-sm text-gray-500">Your Personal Assistant</p>
@@ -20,14 +17,7 @@ const ChatHeader = ({ onNewChat }: ChatHeaderProps) => {
       </div>
       
       <div className="flex items-center gap-2">
-        <Button
-          onClick={onNewChat}
-          variant="ghost"
-          size="sm"
-          className="text-autumn-sage hover:text-autumn-brown hover:bg-autumn-light"
-        >
-          New Chat
-        </Button>
+        
       </div>
     </div>
   );

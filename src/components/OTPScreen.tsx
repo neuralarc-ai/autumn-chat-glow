@@ -46,7 +46,7 @@ const OTPScreen = ({ onSuccess }: OTPScreenProps) => {
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-cover bg-center" style={{ backgroundImage: "url('/pin-bg.png')" }}>
       <div className="w-full max-w-md">
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-lg p-10 text-center animate-scale-in">
+        <div className="bg-white/10 backdrop-blur-sm rounded-sm shadow-lg p-10 text-center animate-scale-in">
           <div className="w-16 h-16 bg-gradient-to-br from-autumn-sage to-autumn-brown rounded-full flex items-center justify-center mx-auto mb-8">
             <Lock size={24} className="text-white" />
           </div>

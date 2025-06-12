@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Bot, User } from 'lucide-react';
 
@@ -11,11 +10,11 @@ interface ChatMessageProps {
 const ChatMessage = ({ message, isBot, timestamp }: ChatMessageProps) => {
   return (
     <div className={`flex items-start gap-3 mb-6 chat-message-enter ${isBot ? '' : 'flex-row-reverse'}`}>
-      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+      <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center overflow-hidden ${
         isBot ? 'bg-autumn-sage' : 'bg-autumn-brown'
       }`}>
         {isBot ? (
-          <Bot size={16} className="text-white" />
+          <img src="/ai-agent.png" alt="AI Agent" className="w-full h-full object-cover" />
         ) : (
           <User size={16} className="text-white" />
         )}

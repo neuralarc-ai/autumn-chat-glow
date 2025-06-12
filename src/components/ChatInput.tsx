@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, Send } from 'lucide-react';
+import { ChevronRight, Mic, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface ChatInputProps {
@@ -42,7 +42,7 @@ const ChatInput = ({ onSendMessage, disabled }: ChatInputProps) => {
             onKeyPress={handleKeyPress}
             placeholder="Type your message..."
             disabled={disabled}
-            className="w-full resize-none px-4 py-3 pr-12 text-sm focus:outline-none focus:ring-0 focus:border-0 transition-all  max-h-32 min-h-[48px]"
+            className="w-full resize-none px-4 py-3 pr-24 text-sm focus:outline-none focus:ring-0 focus:border-0 transition-all  max-h-32 min-h-[48px]"
             rows={1}
             style={{
               height: 'auto',
@@ -55,12 +55,16 @@ const ChatInput = ({ onSendMessage, disabled }: ChatInputProps) => {
             }}
           />
           <Button
+            type="button"
+            disabled={disabled}
+            className="absolute right-14 top-1/2 -translate-y-1/2 text-white rounded-full h-10 w-10 p-0 bg-autumn-brown"
+          >
+            <Mic size={18} />
+          </Button>
+          <Button
             type="submit"
             disabled={!message.trim() || disabled}
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-white rounded-sm h-10 w-10 p-0"
-            style={{
-              background: 'linear-gradient(90deg, #262626 -10.57%, #8B9C76 24.74%, #CEAF8E 56.8%)',
-            }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-white rounded-[4px] h-10 w-10 p-0 bg-autumn-brown"
           >
             <ChevronRight size={18} />
           </Button>
