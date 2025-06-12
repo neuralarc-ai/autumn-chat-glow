@@ -7,22 +7,26 @@ const WelcomeMessage = () => {
     {
       icon: Coffee,
       title: "Tell me a joke",
-      description: "Brighten up my day"
+      description: "Brighten up my day",
+      borderColor: "border-l-orange-400"
     },
     {
       icon: BookOpen,
       title: "Help me learn something",
-      description: "Explain a concept"
+      description: "Explain a concept",
+      borderColor: "border-l-blue-400"
     },
     {
       icon: Lightbulb,
       title: "Creative brainstorming",
-      description: "Generate ideas together"
+      description: "Generate ideas together",
+      borderColor: "border-l-green-400"
     },
     {
       icon: Sparkles,
       title: "Plan my day",
-      description: "Organize my schedule"
+      description: "Organize my schedule",
+      borderColor: "border-l-purple-400"
     }
   ];
 
@@ -42,7 +46,7 @@ const WelcomeMessage = () => {
         {suggestions.map((suggestion, index) => (
           <div
             key={index}
-            className="group p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200 cursor-pointer animate-slide-up"
+            className={`group p-6 bg-white rounded-2xl shadow-sm border border-gray-100 border-l-8 ${suggestion.borderColor} hover:shadow-md transition-all duration-200 cursor-pointer animate-slide-up`}
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <div className="flex items-start gap-4">
