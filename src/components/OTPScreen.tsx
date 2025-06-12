@@ -1,7 +1,6 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
-import { Button } from '@/components/ui/button';
 import { Lock, AlertCircle } from 'lucide-react';
 
 interface OTPScreenProps {
@@ -15,18 +14,13 @@ const OTPScreen = ({ onSuccess }: OTPScreenProps) => {
 
   const correctPin = '0457';
 
-  const handleSubmit = () => {
-    if (value.length !== 4) {
-      setError('Please enter a 4-digit PIN');
-      return;
-    }
-
+  const handleSubmit = (pinValue: string) => {
     setIsLoading(true);
     setError('');
 
     // Simulate a brief loading state
     setTimeout(() => {
-      if (value === correctPin) {
+      if (pinValue === correctPin) {
         onSuccess();
       } else {
         setError('Incorrect PIN. Please try again.');
@@ -42,6 +36,13 @@ const OTPScreen = ({ onSuccess }: OTPScreenProps) => {
       setError('');
     }
   };
+
+  // Auto-submit when PIN is complete
+  useEffect(() => {
+    if (value.length === 4 && !isLoading) {
+      handleSubmit(value);
+    }
+  }, [value, isLoading]);
 
   return (
     <div className="min-h-screen bg-autumn-beige flex items-center justify-center p-6">
@@ -60,6 +61,7 @@ const OTPScreen = ({ onSuccess }: OTPScreenProps) => {
               onChange={handleValueChange}
               maxLength={4}
               className="flex justify-center"
+              disabled={isLoading}
             >
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
@@ -70,20 +72,18 @@ const OTPScreen = ({ onSuccess }: OTPScreenProps) => {
             </InputOTP>
           </div>
 
+          {isLoading && (
+            <div className="mb-6 text-gray-600 text-sm">
+              Verifying...
+            </div>
+          )}
+
           {error && (
             <div className="mb-6 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-700 animate-fade-in">
               <AlertCircle size={16} />
               <span className="text-sm">{error}</span>
             </div>
           )}
-
-          <Button
-            onClick={handleSubmit}
-            disabled={value.length !== 4 || isLoading}
-            className="w-full bg-autumn-brown hover:bg-autumn-brown/90 text-white"
-          >
-            {isLoading ? 'Verifying...' : 'Enter'}
-          </Button>
         </div>
       </div>
     </div>
