@@ -42,18 +42,20 @@ const WelcomeMessage = () => {
         {suggestions.map((suggestion, index) => (
           <div
             key={index}
-            className="group p-4 bg-white rounded-xl border border-gray-200 hover:border-autumn-sage hover:shadow-md transition-all duration-200 cursor-pointer animate-slide-up"
+            className="group p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200 cursor-pointer animate-slide-up"
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-autumn-light rounded-lg flex items-center justify-center group-hover:bg-autumn-sage group-hover:text-white transition-colors">
-                <suggestion.icon size={18} />
+            <div className="flex items-start gap-4">
+              <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-autumn-sage group-hover:text-white transition-colors">
+                <suggestion.icon size={16} />
               </div>
-              <div className="flex-1">
-                <h3 className="font-medium text-gray-800 group-hover:text-autumn-brown transition-colors">
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-gray-900 mb-2 text-lg">
                   {suggestion.title}
                 </h3>
-                <p className="text-sm text-gray-500">{suggestion.description}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {suggestion.description}
+                </p>
               </div>
             </div>
           </div>
